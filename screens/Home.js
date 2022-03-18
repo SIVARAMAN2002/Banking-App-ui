@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View,FlatList } from 'react-native';
+import { StyleSheet, Text, View,FlatList ,ActivityIndicator} from 'react-native';
 import { useState } from 'react';
+
 
 export default function Home()
 {
@@ -32,14 +33,17 @@ export default function Home()
          
         );
 
+        
+
       return(
         <View style={styles.lid}>
           <Text style={styles.ush}>Transaction</Text>
             <FlatList
-             numColumns={1}
+
              keyExtractor={(item) => item.id} 
              data={people} 
-             renderItem={renderItem}
+             renderItem={renderItem} style={styles.new}
+            
             />
         </View>
       );
@@ -75,6 +79,8 @@ const styles = StyleSheet.create({
   ush:{
     fontSize:25,
     padding:10
-  }
+  },
+  new:{
+   height:200  }
 
 });

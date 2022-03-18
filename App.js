@@ -9,12 +9,14 @@ import { useFonts } from 'expo-font';
 import { MaterialIcons,Ionicons,FontAwesome5,Feather,AntDesign  ,Foundation} from '@expo/vector-icons';
 import { borderColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { TouchableOpacity } from 'react-native-web';
-import Pay from './screens/pay';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 
 
-export default function App() {
+export default function App({navigation}) {
 
   
   const [loaded] = useFonts({
@@ -30,7 +32,7 @@ export default function App() {
   
   return (
 
-  
+  <ScrollView>
     <ImageBackground source={require('./images/back.png')} style={styles.sh}>
       <View style={styles.outer}>
       <View>
@@ -41,7 +43,7 @@ export default function App() {
         </View>
         <View style={styles.fo}>
       <Text style={{fontFamily: 'Montserrat',fontSize:18,fontStyle:'normal',fontWeight:'bold',textAlign:'center'}}>HI,SIVARAMAN</Text>
-       <Text style={{fontFamily:'Montserrat',fontSize:13,textAlign:'center'}}>welcome to ICIC Bank</Text>
+       <Text style={{fontFamily:'Montserrat',fontSize:13,textAlign:'center'} }>welcome to ICIC Bank</Text>
         </View>
         </View>
 
@@ -63,16 +65,23 @@ export default function App() {
          </ScrollView>
          
         </View>
-       <Pay/>
+        <View style={styles.se}>
+         
+        
+
+
+        
+         <Text onPress={()=> navigation.push("Pay")}  style={styles.new} >NEW PAYMENT</Text>
+         <AntDesign name="rightcircle" size={24} color="black" style={styles.ssf} />
+       </View>
         <View>
         
             <Home style={styles.hoem}/>
         </View>
-        <View>
-        <Foundation name="home" size={24} color="black" />
-          </View>
+       
 
     </ImageBackground>
+    </ScrollView>
    
   );
 }
@@ -139,7 +148,24 @@ const styles = StyleSheet.create({
     flex:1
   },
   
-  
+  se:{
+    borderRadius:10,
+    backgroundColor:'#03a89e',
+    width:300,
+    height:50,
+    marginLeft:20,
+    marginTop:5
+  },
+  new:
+  {
+    padding:10,
+    textAlign:'center'
+  },
+  ssf:
+{
+marginLeft:220,
+marginTop:-30
+}
   
   
 });
